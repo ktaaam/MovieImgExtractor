@@ -21,3 +21,15 @@ D:\Users\DallasTang_PC\Documents\COMP4900\MovieImgExtractor\MovieImgExtractor\ob
 D:\Users\DallasTang_PC\Documents\COMP4900\MovieImgExtractor\MovieImgExtractor\obj\Debug\MovieImgExtractor.VideoExtractor.resources
 D:\Users\DallasTang_PC\Documents\COMP4900\MovieImgExtractor\MovieImgExtractor\obj\Debug\MovieImgExtractor.Properties.Resources.resources
 D:\Users\DallasTang_PC\Documents\COMP4900\MovieImgExtractor\MovieImgExtractor\obj\Debug\MovieImgExtractor.csproj.GenerateResource.Cache
+D:\Work\MovieImgExtractor\MovieImgExtractor\bin\Debug\MovieImgExtractor.exe.config
+D:\Work\MovieImgExtractor\MovieImgExtractor\obj\Debug\MovieImgExtractor.exe
+D:\Work\MovieImgExtractor\MovieImgExtractor\obj\Debug\MovieImgExtractor.pdb
+D:\Work\MovieImgExtractor\MovieImgExtractor\bin\Debug\MovieImgExtractor.exe
+D:\Work\MovieImgExtractor\MovieImgExtractor\bin\Debug\MovieImgExtractor.pdb
+D:\Work\MovieImgExtractor\MovieImgExtractor\bin\Debug\MediaToolkit.dll
+D:\Work\MovieImgExtractor\MovieImgExtractor\bin\Debug\NReco.VideoConverter.dll
+D:\Work\MovieImgExtractor\MovieImgExtractor\bin\Debug\NReco.VideoConverter.xml
+D:\Work\MovieImgExtractor\MovieImgExtractor\obj\Debug\MovieImgExtractor.csprojResolveAssemblyReference.cache
+D:\Work\MovieImgExtractor\MovieImgExtractor\obj\Debug\MovieImgExtractor.VideoExtractor.resources
+D:\Work\MovieImgExtractor\MovieImgExtractor\obj\Debug\MovieImgExtractor.Properties.Resources.resources
+D:\Work\MovieImgExtractor\MovieImgExtractor\obj\Debug\MovieImgExtractor.csproj.GenerateResource.Cache

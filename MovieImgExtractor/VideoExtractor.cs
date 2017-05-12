@@ -52,23 +52,38 @@ namespace MovieImgExtractor
          */ 
         private void Open_Click(object sender, EventArgs e)
         {
-            //get thumbnail from video and save it as a jpg
-            string path = FilePath.Text.ToString();
-            MediaFile inputFile = new MediaFile { Filename = path };
-            MediaFile outputFile = new MediaFile { Filename = @"thumbnails/thumbnail.jpg" };
-
-            using (Engine engine = new Engine())
-            {
-                engine.GetMetadata(inputFile);
-
-                // Saves the frame located on the 15th second of the video.
-                ConversionOptions options = new ConversionOptions { Seek = TimeSpan.FromSeconds(1) };
-                engine.GetThumbnail(inputFile, outputFile, options);
-            }
-
             //set the picturebox to the thumbnail image
             Thumbnail_Box.SizeMode = PictureBoxSizeMode.StretchImage;
-            Thumbnail_Box.Image = new Bitmap(@"thumbnails/thumbnail.jpg");
+            Thumbnail_Box.Image = new Bitmap(@"thumbnails/" + imagePath.Text + ".jpg");
+        }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            if(System.Text.RegularExpressions.Regex.IsMatch(imagePath.Text, "^[a-zA-Z]")) {
+               
+                //get thumbnail from video and save it as a jpg
+                string path = FilePath.Text.ToString();
+                MediaFile inputFile = new MediaFile { Filename = path };
+                MediaFile outputFile = new MediaFile { Filename = @"thumbnails/" + imagePath.Text + ".jpg" };
+
+                using (Engine engine = new Engine())
+                {
+                    engine.GetMetadata(inputFile);
+         
+                    int time = Int32.Parse(timeInVideo.Text);
+                    if (time < TimeSpan.FromSeconds(0).Ticks)
+                    {
+                        // Saves the frame located on the 15th second of the video.
+                        ConversionOptions options = new ConversionOptions { Seek = TimeSpan.FromSeconds(time) };
+                        engine.GetThumbnail(inputFile, outputFile, options);
+                    }
+                }
+            }else
+            {
+                MessageBox.Show("Error image name has not been entered", "Error Image name", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+            }
+
         }
     }
 }
