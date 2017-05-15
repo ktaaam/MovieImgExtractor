@@ -109,5 +109,32 @@ namespace MovieImgExtractor
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            WindowsMediaPlayer wmp = new WindowsMediaPlayerClass();
+            IWMPMedia mediainfo = wmp.newMedia(FilePath.Text);
+
+            // ...Add code to ensure that the text box contains a valid value.
+            // Set the current position of the media item to the position entered by the user.
+            if (mediaPlayer.Ctlcontrols.currentPosition < mediainfo.duration)
+            {
+                mediaPlayer.Ctlcontrols.currentPosition = mediaPlayer.Ctlcontrols.currentPosition + 0.05;
+                mediaPlayer.Ctlcontrols.play();
+                mediaPlayer.Ctlcontrols.pause();
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // ...Add code to ensure that the text box contains a valid value.
+            // Set the current position of the media item to the position entered by the user.
+            if(mediaPlayer.Ctlcontrols.currentPosition > 0.05)
+            {
+                mediaPlayer.Ctlcontrols.currentPosition = mediaPlayer.Ctlcontrols.currentPosition - 0.05;
+                mediaPlayer.Ctlcontrols.play();
+                mediaPlayer.Ctlcontrols.pause();
+            }
+            
+        }
     }
 }
