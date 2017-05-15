@@ -3,6 +3,7 @@
  * to get video thumbnails from MOV and mp4 files
  */
 
+using AxWMPLib;
 using MediaToolkit;
 using MediaToolkit.Model;
 using MediaToolkit.Options;
@@ -16,6 +17,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WMPLib;
 
 namespace MovieImgExtractor
 {
@@ -64,12 +66,13 @@ namespace MovieImgExtractor
                 //get thumbnail from video and save it as a jpg
                 string path = FilePath.Text.ToString();
                 MediaFile inputFile = new MediaFile { Filename = path };
-                MediaFile outputFile = new MediaFile { Filename = @"thumbnails/" + imagePath.Text + ".jpg" };
+                MediaFile outputFile = new MediaFile { Filename = @"C:/Users/Kevin/Documents/GitHub/MovieImgExtractor/MovieImgExtractor/bin/Debug/thumbnails/" + imagePath.Text + ".jpg" };
+                Console.WriteLine(outputFile.Filename);
 
                 using (Engine engine = new Engine())
                 {
                     engine.GetMetadata(inputFile);
-         
+                    //timeInVideo.Text = mediaPlayer.Ctlcontrols.currentPositionString;
                     int time = Int32.Parse(timeInVideo.Text);
                     if (time < TimeSpan.FromSeconds(0).Ticks)
                     {
@@ -85,5 +88,33 @@ namespace MovieImgExtractor
             }
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            mediaPlayer.URL = FilePath.Text.ToString();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            mediaPlayer.Ctlcontrols.stop();
+        }
+        private void Player_MediaError(object sender, _WMPOCXEvents_MediaErrorEvent e)
+        {
+            try
+            // If the Player encounters a corrupt or missing file, 
+            // show the hexadecimal error code and URL.
+            {
+                IWMPMedia2 errSource = e.pMediaObject as IWMPMedia2;
+                IWMPErrorItem errorItem = errSource.Error;
+                MessageBox.Show("Error " + errorItem.errorCode.ToString("X")
+                                + " in " + errSource.sourceURL);
+            }
+            catch (InvalidCastException)
+            // In case pMediaObject is not an IWMPMedia item.
+            {
+                MessageBox.Show("Error.");
+            }
+        }
+
     }
 }
