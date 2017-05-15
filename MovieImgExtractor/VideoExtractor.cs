@@ -70,7 +70,9 @@ namespace MovieImgExtractor
                 MediaFile inputFile = new MediaFile { Filename = path };
                 MediaFile outputFile = new MediaFile { Filename = @"thumbnails/" + imagePath.Text + ".jpg" };
                 timeInVideo.Text =  mediaPlayer.Ctlcontrols.currentPositionString;
-                float time = float.Parse(timeInVideo.Text, CultureInfo.InvariantCulture.NumberFormat);
+                String[] split = timeInVideo.Text.Split(':');
+                float time = float.Parse(split[0]) * 60 + float.Parse(split[1]);
+                //float time = float.Parse(timeInVideo.Text, CultureInfo.InvariantCulture.NumberFormat);
                 using (var engine = new Engine())
                 {
                     engine.GetMetadata(inputFile);
