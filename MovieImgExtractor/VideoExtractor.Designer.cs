@@ -41,8 +41,6 @@
             this.imagePath = new System.Windows.Forms.TextBox();
             this.saveButton = new System.Windows.Forms.Button();
             this.mediaPlayer = new AxWMPLib.AxWindowsMediaPlayer();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Thumbnail_Box)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mediaPlayer)).BeginInit();
             this.SuspendLayout();
@@ -153,34 +151,12 @@
             this.mediaPlayer.Size = new System.Drawing.Size(927, 418);
             this.mediaPlayer.TabIndex = 12;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(17, 684);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(153, 45);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "Start";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(195, 684);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(149, 45);
-            this.button2.TabIndex = 14;
-            this.button2.Text = "Stop";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // VideoExtractor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1887, 1329);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.mediaPlayer);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.imagePath);
@@ -216,8 +192,6 @@
         private System.Windows.Forms.TextBox imagePath;
         private System.Windows.Forms.Button saveButton;
         private AxWMPLib.AxWindowsMediaPlayer mediaPlayer;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
     }
 }
 

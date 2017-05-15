@@ -43,7 +43,8 @@ namespace MovieImgExtractor
                 string path = dialog.FileName; // get name of file
                 using (StreamReader reader = new StreamReader(new FileStream(path, FileMode.Open), new UTF8Encoding()))
                 {
-                    FilePath.Text = path; 
+                    FilePath.Text = path;
+                    mediaPlayer.URL = FilePath.Text.ToString();
                 }
             }
         }
@@ -89,15 +90,7 @@ namespace MovieImgExtractor
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            mediaPlayer.URL = FilePath.Text.ToString();
-        }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            mediaPlayer.Ctlcontrols.stop();
-        }
         private void Player_MediaError(object sender, _WMPOCXEvents_MediaErrorEvent e)
         {
             try
