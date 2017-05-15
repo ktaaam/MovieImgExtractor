@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -61,30 +62,27 @@ namespace MovieImgExtractor
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            if(System.Text.RegularExpressions.Regex.IsMatch(imagePath.Text, "^[a-zA-Z]")) {
-               
+            if (System.Text.RegularExpressions.Regex.IsMatch(imagePath.Text, "^[a-zA-Z]"))
+            {
+
                 //get thumbnail from video and save it as a jpg
                 string path = FilePath.Text.ToString();
                 MediaFile inputFile = new MediaFile { Filename = path };
-                MediaFile outputFile = new MediaFile { Filename = @"C:/Users/Kevin/Documents/GitHub/MovieImgExtractor/MovieImgExtractor/bin/Debug/thumbnails/" + imagePath.Text + ".jpg" };
-                Console.WriteLine(outputFile.Filename);
-
-                using (Engine engine = new Engine())
+                MediaFile outputFile = new MediaFile { Filename = @"thumbnails/" + imagePath.Text + ".jpg" };
+                timeInVideo.Text =  mediaPlayer.Ctlcontrols.currentPositionString;
+                float time = float.Parse(timeInVideo.Text, CultureInfo.InvariantCulture.NumberFormat);
+                using (var engine = new Engine())
                 {
                     engine.GetMetadata(inputFile);
-                    //timeInVideo.Text = mediaPlayer.Ctlcontrols.currentPositionString;
-                    int time = Int32.Parse(timeInVideo.Text);
-                    if (time < TimeSpan.FromSeconds(0).Ticks)
-                    {
-                        // Saves the frame located on the 15th second of the video.
-                        ConversionOptions options = new ConversionOptions { Seek = TimeSpan.FromSeconds(time) };
-                        engine.GetThumbnail(inputFile, outputFile, options);
-                    }
+
+                    // Saves the frame located on the 15th second of the video.
+                    var options = new ConversionOptions { Seek = TimeSpan.FromSeconds(time) };
+                    engine.GetThumbnail(inputFile, outputFile, options);
                 }
-            }else
+            }
+            else
             {
                 MessageBox.Show("Error image name has not been entered", "Error Image name", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
             }
 
         }
